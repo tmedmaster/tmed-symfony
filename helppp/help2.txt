@@ -1,0 +1,63 @@
+
+composer create-project symfony/website-skeleton symbnb ~4.4
+php bin/condole server:run
+php -S 127.0.0.1:8008 -t public
+mysql root "" port: 3308
+
+ php bin/console about
+ 
+ php bin/console doctrine:database symbnb
+  php bin/console make:entity
+  > Ad
+  >> title 
+  
+   php bin/console doctrine:migration
+   php bin\console doctrine:migrations:migrate
+   
+   composer require orm-fixtures --dev
+    php bin/console make:fixtures
+	> AppFixtures                  -> ( modifier src/DataFixtures/AppFixtures.php)
+	php bin\console doctrine:fixtures:load
+	composer require fzaninotto/faker    -> ( modifier src/DataFixtures/AppFixtures.php)
+	composer require cocur/slugify     -> ( modifier src/DataFixtures/AppFixtures.php)
+	php bin\console doctrine:fixtures:load
+	
+	php bin/console make:controller AdController
+	
+	dump($ads)
+	
+	php bin/condole debug:autowiring    (pertmet de connaitre les service )
+	
+	php bin/console make:form 
+	> AdType          le nom de formulaire
+	> Ad               nom de l'enty(table)
+	src/Form/AdType.php
+	
+ 
+
+// fixtures
+
+composer require orm-fixtures --dev
+composer require fzaninotto/faker
+composer require cocur/slugify
+php bin\console make:fixtures
+php bin\console doctrine:fixtures:load
+
+
+
+
+
+
+ php bin/console make:controller ProductController
+
+ php bin\console make:form ImageType
+ php bin\console make:migration
+ php bin\console doctrine:migrations:migrate
+ 
+ php bin/console doctrine:query:sql 'SELECT * FROM image'
+ 
+
+// git
+	git init
+    git add .
+##  git commit -m "Gestion des annonces, formulaires et creation et edition"

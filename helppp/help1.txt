@@ -1,0 +1,63 @@
+ How to test?
+
+http://127.0.0.1:8000
+
+php -S 127.0.0.1:8000 -t public
+
+
+
+  * Write test cases in the tests/ folder
+  * Run php bin/phpunit
+
+
+ What's next?
+
+
+  * You're ready to send emails.
+
+  * If you want to send emails via a supported email provider, install
+    the corresponding bridge.
+    For instance, composer require mailgun-mailer for Mailgun.
+
+  * If you want to send emails asynchronously:
+
+    1. Install the messenger component by running composer require messenger;
+    2. Add 'Symfony\Component\Mailer\Messenger\SendEmailMessage': amqp to the
+       config/packages/messenger.yaml file under framework.messenger.routing
+       and replace amqp with your transport name of choice.
+
+  * Read the documentation at https://symfony.com/doc/master/mailer.html
+  
+  
+  $ad = new Ad();
+
+        $ad->setTitle("Titre de l'annonce")
+            ->setSlug("Titre-de-l-annonce")
+            ->setPrice(80)
+            ->setIntroduction("Bonjour à tous c'est une introduction")
+            ->setContent("<p>Je suis un contenu riche !</p>")
+            ->setCoverImage("http://placehold.it/1000x300")
+            ->setRooms(3);
+        
+        $manager->persist($ad);
+		
+		
+		
+
+ /**
+     * Permet d'afficher une seule annonce
+     * 
+     * @Route("/ads/{slug}", name="ads_show")
+     * 
+     * @return Response
+     */
+    public function show($slug, AdRepository $repo){
+        // je recupere l'annonce qui correspond au slug
+        $ad = $repo->findOneBySlug($slug);
+
+        return $this->render('ad/show.html.twig', [
+            'ad' => $ad
+        ]);
+    }
+		
+		
